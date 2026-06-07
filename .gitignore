@@ -1,0 +1,21 @@
+# Xcode / build
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+
+# Generated project (regenerate with `xcodegen generate`)
+CruiseWallet.xcodeproj/
+
+# Generated assets (regenerate with the fal.ai pipeline)
+CruiseWallet/Resources/Generated/
+
+# fal.ai secrets
+tools/.env
+tools/node_modules/
+
+# Screenshots
+shots/
+
+# macOS
+.DS_Store

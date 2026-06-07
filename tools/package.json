@@ -1,0 +1,15 @@
+{
+  "name": "cruzero-assets",
+  "private": true,
+  "type": "module",
+  "description": "fal.ai asset generation + Assets.xcassets import pipeline for Cruzero.",
+  "scripts": {
+    "generate": "node generate-assets.mjs",
+    "generate:dry": "node generate-assets.mjs --dry-run",
+    "import": "node import-assets.mjs",
+    "assets": "node generate-assets.mjs && node import-assets.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

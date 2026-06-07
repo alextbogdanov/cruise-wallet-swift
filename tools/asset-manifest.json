@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "outputDir": "CruiseWallet/Resources/Generated",
+  "assetCatalog": "CruiseWallet/Resources/Assets.xcassets",
+  "generatedGroup": "Generated",
+  "models": {
+    "illustration": "fal-ai/recraft-v3",
+    "photo": "fal-ai/flux-pro/v1.1"
+  },
+  "recraftStyle": "digital_illustration",
+  "styleSuffix": {
+    "illustration": "Minimal flat vector emblem / app-style mark, single clean motif, dusk-indigo (#2E6C92) and teal (#5FA3C2) palette on a soft neutral ground, rounded geometric shapes, generous negative space, crisp and modern. No text, no lettering, no words.",
+    "photo": "Photorealistic travel photograph, golden-hour or soft natural light, rich but natural color, slightly imperfect amateur framing, no people in the foreground. NOT an over-processed brochure or stock shot. No text, no watermark, no logos."
+  },
+  "assets": [
+    {
+      "name": "port_santorini", "category": "port", "type": "photo", "size": "landscape_4_3",
+      "screen": "Aurora of the Seas — cover/hero",
+      "prompt": "Santorini caldera at golden hour: whitewashed cliffside village with blue-domed churches above the calm deep-blue Aegean, a cruise ship anchored far below, warm low sun."
+    },
+    {
+      "name": "port_stmaarten", "category": "port", "type": "photo", "size": "landscape_4_3",
+      "screen": "Coral Mirage — cover/hero",
+      "prompt": "A turquoise Caribbean bay at Philipsburg, St. Maarten: palm-lined white sand beach, vivid teal shallows fading to deep blue, soft golden afternoon light."
+    },
+    {
+      "name": "port_geiranger", "category": "port", "type": "photo", "size": "landscape_4_3",
+      "screen": "Northern Lyric — cover/hero",
+      "prompt": "Norway's Geirangerfjord: steep emerald cliffs with thin waterfalls plunging to deep blue still water, low Nordic sun, a sense of vast quiet grandeur."
+    },
+    {
+      "name": "port_glacierbay", "category": "port", "type": "photo", "size": "landscape_4_3",
+      "screen": "Glacier Sovereign — cover/hero",
+      "prompt": "Alaska's Glacier Bay: a blue tidewater glacier meeting calm reflective water, snow-capped peaks behind, crisp cool light, pristine wilderness."
+    },
+
+    {
+      "name": "ship_aurora_1", "category": "ship", "type": "photo", "size": "landscape_4_3",
+      "screen": "Ship — Aurora of the Seas",
+      "prompt": "A large modern luxury cruise ship at dusk on calm water, accurate decks, hull, lifeboats and tiered balconies, glowing windows, golden light. No branding, no visible name, no funnel logo."
+    },
+    {
+      "name": "ship_aurora_2", "category": "ship", "type": "photo", "size": "landscape_4_3",
+      "screen": "Ship — Aurora of the Seas (pool deck)",
+      "prompt": "The open resort pool deck of a modern cruise ship at golden hour, multiple pools and loungers, glass railings, sea beyond. No branding, no text, no people faces in focus."
+    },
+    {
+      "name": "ship_aurora_3", "category": "ship", "type": "photo", "size": "landscape_4_3",
+      "screen": "Ship — Aurora of the Seas (atrium)",
+      "prompt": "A grand multi-deck atrium promenade inside a modern cruise ship, warm interior lighting, sweeping curved balconies. No branding, no text."
+    },
+    {
+      "name": "ship_coral_1", "category": "ship", "type": "photo", "size": "landscape_4_3",
+      "screen": "Ship — Coral Mirage",
+      "prompt": "A bright contemporary cruise ship in tropical Caribbean light on turquoise water, accurate decks and balconies, water slides on the top deck. No branding, no visible name."
+    },
+    {
+      "name": "ship_coral_2", "category": "ship", "type": "photo", "size": "landscape_4_3",
+      "screen": "Ship — Coral Mirage (aqua deck)",
+      "prompt": "The top-deck aqua park of a modern cruise ship with colorful water slides and a surf simulator under bright sun, sea horizon. No branding, no text."
+    },
+    {
+      "name": "ship_coral_3", "category": "ship", "type": "photo", "size": "landscape_4_3",
+      "screen": "Ship — Coral Mirage (sunset deck)",
+      "prompt": "An adults-only infinity-edge deck at the stern of a cruise ship at sunset over the Caribbean, calm wake trailing behind. No branding, no text."
+    },
+    {
+      "name": "ship_northern_1", "category": "ship", "type": "photo", "size": "landscape_4_3",
+      "screen": "Ship — Northern Lyric",
+      "prompt": "A sleek expedition-style cruise ship in a Norwegian fjord, accurate hull and glass-walled observation lounge, soft northern light, cliffs behind. No branding, no visible name."
+    },
+    {
+      "name": "ship_northern_2", "category": "ship", "type": "photo", "size": "landscape_4_3",
+      "screen": "Ship — Northern Lyric (observation lounge)",
+      "prompt": "A 360-degree glass-walled observation lounge aboard a modern ship, Nordic minimalist interior, fjord scenery through the windows. No branding, no text."
+    },
+    {
+      "name": "ship_glacier_1", "category": "ship", "type": "photo", "size": "landscape_4_3",
+      "screen": "Ship — Glacier Sovereign",
+      "prompt": "A premium cruise ship in Alaskan waters near a glacier, accurate decks and glass solarium, cool crisp light, snow peaks behind. No branding, no visible name."
+    },
+    {
+      "name": "ship_glacier_2", "category": "ship", "type": "photo", "size": "landscape_4_3",
+      "screen": "Ship — Glacier Sovereign (solarium)",
+      "prompt": "A heated glass solarium aboard a cruise ship with loungers facing a glacier through tall windows, calm cool daylight. No branding, no text."
+    },
+
+    {
+      "name": "line_celestia", "category": "logo", "type": "illustration", "size": "square_hd",
+      "screen": "Cruise line mark — Celestia Cruises",
+      "prompt": "A minimal emblem of a stylized star/celestial spark inside a soft rounded badge."
+    },
+    {
+      "name": "line_azure", "category": "logo", "type": "illustration", "size": "square_hd",
+      "screen": "Cruise line mark — Azure Line",
+      "prompt": "A minimal emblem of a single curved wave inside a soft rounded badge."
+    },
+    {
+      "name": "line_fjordline", "category": "logo", "type": "illustration", "size": "square_hd",
+      "screen": "Cruise line mark — Fjordline Voyages",
+      "prompt": "A minimal emblem of a simple geometric mountain-and-fjord motif inside a soft rounded badge."
+    },
+    {
+      "name": "line_polarstar", "category": "logo", "type": "illustration", "size": "square_hd",
+      "screen": "Cruise line mark — Polar Star Cruises",
+      "prompt": "A minimal emblem of a north-star / compass rose motif inside a soft rounded badge."
+    }
+  ]
+}
