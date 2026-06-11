@@ -53,14 +53,23 @@ extension View {
         }
     }
 
-    /// Non-interactive glass effect (for display elements, not buttons)
+    /// Non-interactive glass effect (for display elements, not buttons).
+    ///
+    /// `lightweight` forces the cheap gradient-fill fallback even on iOS 26,
+    /// skipping native Liquid Glass (`.glassEffect`). Liquid Glass is a live
+    /// backdrop blur — fine for one static surface, but murderous when many
+    /// instances animate at once (the wallet stack composites one per card every
+    /// frame during the open/close morph). Over a photographic card the fallback
+    /// reads near-identically, so stack cards pass `true` and only the single
+    /// pinned open card keeps real glass.
     @ViewBuilder
     func compatibleGlassStatic(
         tint: Color = .clear,
         cornerRadius: CGFloat = 20,
-        style: RoundedCornerStyle = .continuous
+        style: RoundedCornerStyle = .continuous,
+        lightweight: Bool = false
     ) -> some View {
-        if #available(iOS 26, *) {
+        if #available(iOS 26, *), !lightweight {
             self.glassEffect(
                 .regular.tint(tint),
                 in: RoundedRectangle(cornerRadius: cornerRadius, style: style)

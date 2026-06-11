@@ -13,6 +13,11 @@ import SwiftUI
 struct CountdownChip: View {
     let status: CruiseStatus
     var prominent: Bool = false
+    /// Skip the live `.ultraThinMaterial` backdrop blur in favour of a static
+    /// translucent fill. The blur is a per-frame offscreen sample; on the wallet
+    /// stack ~5 chips animate at once during the open/close morph, so stack cards
+    /// pass `true`. The dark scrim + stroke keep it legible and visually close.
+    var lightweight: Bool = false
 
     private var symbol: String {
         switch status {
@@ -32,8 +37,18 @@ struct CountdownChip: View {
         .foregroundStyle(.white)
         .padding(.horizontal, prominent ? 14 : 11)
         .padding(.vertical, prominent ? 8 : 6)
-        .background(.ultraThinMaterial.opacity(0.9), in: Capsule())
-        .background(Color.black.opacity(0.28), in: Capsule())
+        .background(chipMaterial)
+        .background(Color.black.opacity(lightweight ? 0.42 : 0.28), in: Capsule())
         .overlay(Capsule().stroke(.white.opacity(0.22), lineWidth: 0.5))
+    }
+
+    /// Live blur at rest (full instance), cheap fill when lightweight (stack cards).
+    @ViewBuilder
+    private var chipMaterial: some View {
+        if lightweight {
+            Capsule().fill(Color.white.opacity(0.12))
+        } else {
+            Capsule().fill(.ultraThinMaterial.opacity(0.9))
+        }
     }
 }

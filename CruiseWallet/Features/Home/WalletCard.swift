@@ -2,16 +2,16 @@
 //  WalletCard.swift
 //  CruiseWallet
 //
-//  The Apple-Wallet pass card, reworked from `SailingCard`. Full-bleed photo, a
-//  floating liquid-glass info bar (ship name + dates + line logo) and a glass
-//  countdown chip. Unlike v1 it owns no navigation: tap is handled by `HomeView`,
-//  and the card is the *hero* of the open-pass morph — it carries a
-//  `matchedGeometryEffect` so it can fly from its stack slot to the top of the
-//  open pass. `isOpen` lets the opened (overlay) instance drop the resting shadow.
+//  The Apple-Wallet pass card. Full-bleed photo, a floating liquid-glass info bar
+//  (ship name + dates + line logo) and a glass countdown chip. It owns no
+//  navigation: tap is handled by `WalletStack`/`HomeView`. The card is also the
+//  *source* of the native zoom transition into `SailingPassView` — but that hook
+//  (`.matchedTransitionSource`) lives on the stack's card view, not here, so this
+//  type is a plain, presentation-only card used identically in the stack and at
+//  the top of the open pass.
 //
-//  The opened instance also wears a metallic-foil finish (`foilCardMaterial`)
-//  whose specular streak tracks the `light` tilt vector, so the pinned pass card
-//  glints as it is tilted by gyro/drag in `OpenPassView`.
+//  The finish is flat and fast: photo + glass info bar + countdown chip + a static
+//  edge bevel (`foilCardMaterial`) + a soft drop shadow. No Metal sheen, gyro, or tilt.
 //
 
 import SwiftUI
@@ -19,24 +19,9 @@ import SwiftUI
 struct WalletCard: View {
     let sailing: Sailing
     let status: CruiseStatus
-    let namespace: Namespace.ID
-    /// `true` for the instance pinned at the top of the open pass.
-    var isOpen: Bool = false
-    /// Whether to attach the shared `matchedGeometryEffect`. Exactly one rendered
-    /// card per `sailing.id` carries it at a time: the stack instance drops it
-    /// while that pass is open, so the id lives solely on the overlay instance and
-    /// SwiftUI flies the single source from the stack slot to the top of the pass.
-    var matched: Bool = true
     var height: CGFloat = 236
-    /// Tilt direction (~-1...1) that drives the foil sheen's specular streak.
-    /// `.zero` for the resting stack; the open pass feeds its live tilt here.
-    var light: CGSize = .zero
 
     var body: some View {
-        card.matchedGeometry(id: sailing.id, in: namespace, active: matched)
-    }
-
-    private var card: some View {
         ZStack(alignment: .topLeading) {
             AssetImage(name: sailing.backgroundAsset, label: "\(sailing.embarkPort) · \(sailing.shipName)")
                 .frame(height: height)
@@ -49,15 +34,15 @@ struct WalletCard: View {
                 startPoint: .top, endPoint: .center
             )
 
-            CountdownChip(status: status)
+            CountdownChip(status: status, lightweight: true)
                 .padding(14)
         }
         .frame(height: height)
         .frame(maxWidth: .infinity)
         .overlay(alignment: .bottom) { infoBar.padding(10) }
         .clipShape(RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous))
-        .foilCardMaterial(light: light)
-        .themeShadow(isOpen ? Theme.Shadow.medium : Theme.Shadow.soft)
+        .foilCardMaterial()
+        .themeShadow(Theme.Shadow.soft)
         .contentShape(RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous))
     }
 
@@ -77,7 +62,7 @@ struct WalletCard: View {
             logoTile
         }
         .padding(12)
-        .compatibleGlassStatic(tint: Theme.Palette.duskIndigo.opacity(0.10), cornerRadius: 16)
+        .compatibleGlassStatic(tint: Theme.Palette.duskIndigo.opacity(0.10), cornerRadius: 16, lightweight: true)
     }
 
     private var logoTile: some View {
@@ -88,19 +73,5 @@ struct WalletCard: View {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                     .stroke(Theme.Ink.hairline, lineWidth: 1)
             )
-    }
-}
-
-private extension View {
-    /// Attach `matchedGeometryEffect` only when `active`, so a card can fully drop
-    /// the id (rather than linger as a hidden non-source) and keep a single source
-    /// per id across the stack→pass morph.
-    @ViewBuilder
-    func matchedGeometry(id: String, in ns: Namespace.ID, active: Bool) -> some View {
-        if active {
-            matchedGeometryEffect(id: id, in: ns)
-        } else {
-            self
-        }
     }
 }

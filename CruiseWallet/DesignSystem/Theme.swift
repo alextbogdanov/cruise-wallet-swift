@@ -154,8 +154,11 @@ enum Theme {
         static let gentle  = Animation.spring(response: 0.5, dampingFraction: 0.8)
         /// Bouncy, playful (use sparingly).
         static let bouncy  = Animation.spring(response: 0.45, dampingFraction: 0.62)
-        /// Apple-Wallet open/close — quick, minimal settle.
-        static let wallet  = Animation.spring(response: 0.35, dampingFraction: 0.85)
+        /// Apple-Wallet open/close — matches Wallet's curve: a quick decelerating
+        /// spring with NO overshoot (frame analysis of the real animation shows a
+        /// clean ease-out, never a bounce). `bounce: 0` is the no-overshoot form;
+        /// 0.45s reads as Apple's calm glide-and-settle rather than a lurch.
+        static let wallet  = Animation.spring(duration: 0.45, bounce: 0.0)
         /// Page / step transitions.
         static let page    = Animation.easeInOut(duration: 0.3)
     }
