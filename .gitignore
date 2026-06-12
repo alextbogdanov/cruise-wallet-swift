@@ -19,3 +19,8 @@ shots/
 
 # macOS
 .DS_Store
+
+# Tools
+tools/frames
+tools/parity_capture.mp4
+tools/parity_capture_v2.mp4
